@@ -15,10 +15,5 @@ void coup::Duke::tax() {
 }
 
 void coup::Duke::block(coup::Player p1) {
-    if (game->players_names.at(game->i) == this->name()){
-        p1.pay(2);
-        next_turn();
-    } else {
-        throw invalid_argument("Wrong Player Turn");
-    }
+    cout << "blocking" << endl;
 }

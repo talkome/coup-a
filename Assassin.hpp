@@ -15,5 +15,7 @@ namespace coup{
                 player_roles = "Assassin";
                 g.players_names.push_back(n);
             }
+
+        void coup(Player p1);
     };
 }
