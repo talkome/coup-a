@@ -17,7 +17,7 @@ namespace coup{
 
         public:
             vector<string> players_names;
-            int i;
+            unsigned long i;
 
             string win;
 
