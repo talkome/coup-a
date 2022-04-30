@@ -5,6 +5,7 @@
  * @since: 2022-02
  */
 
+#include "Game.hpp"
 #include "Player.hpp"
 #include "Duke.hpp"
 #include "Assassin.hpp"
@@ -23,7 +24,7 @@ int main() {
 
 	Game game_1{};
 
-	/* This player drew the "Duke" card, his name is Moshe
+	/* This player drew the "Duke" card, his player_name is Moshe,
 	and he is a player in game_1 */
 	Duke duke{game_1, "Moshe"};
 	Assassin assassin{game_1, "Yossi"};
@@ -56,26 +57,43 @@ int main() {
 	contessa.income();
 
 	// throws exception, it is duke's turn now
-	assassin.income();
+    try {
+        assassin.income();
+    } catch (exception& ex){
+        cout << ex.what() << endl;
+    }
 
 	duke.income();
 	assassin.foreign_aid();
 
 	// throws exception, the last operation duke performed
 	// is income, which cannot be blocked by any role
-	captain.block(duke);
+    try {
+        captain.block(duke);
+    } catch (exception& ex){
+        cout << ex.what() << endl;
+    }
 
 	cout << duke.coins() << endl; // prints 2
 	cout << assassin.coins() << endl; // prints 3
 
 	// throws exception, the last operation duke performed
 	// is foreign aid, which cannot be blocked by contessa
-	contessa.block(assassin);
+    try {
+        contessa.block(assassin);
+    } catch (exception& ex){
+        cout << ex.what() << endl;
+    }
 
-	duke.block(assassin);
+    try {
+        duke.block(assassin);
+    } catch (exception& ex){
+        cout << ex.what() << endl;
+    }
+
 	cout << assassin.coins() << endl; // prints 1
 
-	ambassador.transfer(duke, assassin); //transfers 1 coin from duke to assassin
+	ambassador.transfer(duke, assassin); //transfers 1 curr_coins from duke to assassin
 	captain.foreign_aid();
 	contessa.foreign_aid();
 
